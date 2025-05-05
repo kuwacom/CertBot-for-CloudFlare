@@ -1,0 +1,19 @@
+services:
+  certbot:
+    image: certbot/dns-cloudflare
+    container_name: certbot
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./cloudflare/cloudflare.ini:/etc/letsencrypt/cloudflare.ini
+      - ./certs/live:/etc/letsencrypt/live
+      - ./certs/archive:/etc/letsencrypt/archive
+    command: >
+      certonly
+      --dns-cloudflare
+      --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini
+      --dns-cloudflare-propagation-seconds 60
+      --non-interactive
+      --agree-tos
+      --email email@example.com
+      -d example.com
+      -d '*.example.com'

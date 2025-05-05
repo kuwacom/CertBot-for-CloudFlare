@@ -1,0 +1,11 @@
+# Let's Encrypt
+letsencrypt/
+cloudflare/*.ini
+!cloudflare/example.ini
+
+# Certs
+certs/
+
+# docker compose
+docker-compose*.yaml
+!docker-compose.yaml
